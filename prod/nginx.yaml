@@ -1,0 +1,26 @@
+apiVersion: microservices.lyrisoft.tech/v1
+kind: LyrisoftService
+metadata:
+  name: nginx
+  namespace: production
+spec:
+  image: nginx:latest
+  replicas: 1
+  port: 80
+
+  serviceType: ClusterIP
+
+  configs:
+    MESSAGE: "Hello from LyrisoftService ConfigMap!"
+    ENVIRONMENT: "development"
+  
+  secrets:
+    API_KEY: "my-super-secret-key" # Values will be base64 encoded by the operator
+    DATABASE_URL: "jdbc:postgresql://db:5432/mydb"
+
+  additionalSecrets: []
+
+  ingress:
+    host: nginx.localhost
+    path: /
+    # tls:
