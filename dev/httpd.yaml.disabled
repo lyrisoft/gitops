@@ -2,12 +2,12 @@ apiVersion: microservices.lyrisoft.tech/v1
 kind: LyrisoftService
 metadata:
   name: httpd
-  namespace: development # Or your desired namespace
+  namespace: development
 spec:
-  image: httpd:latest # Use a simple image for testing
+  image: httpd:latest
   replicas: 1
   port: 80
-  serviceType: ClusterIP # Or NodePort/LoadBalancer
+  serviceType: ClusterIP
 
   configs:
     MESSAGE: "Hello from LyrisoftService ConfigMap!"
